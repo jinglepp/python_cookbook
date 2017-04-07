@@ -28,3 +28,5 @@ print(a.start, a.stop, a.step)  # 5 50 2
 # 从而避免IndexError
 s = "HelloWorld"
 print(a.indices(len(s)))  # (5, 10, 2)
+for i in range(*a.indices(len(s))):
+    print(s[i])
