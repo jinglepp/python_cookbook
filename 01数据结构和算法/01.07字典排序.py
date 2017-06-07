@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-
+# 问题
+# 你想创建一个字典，并且在迭代或序列化这个字典的时候能够控制元素的顺序。
+#
+# 解决方案
+# 为了能控制一个字典中元素的顺序，你可以使用 collections 模块中的 OrderedDict 类。
+# 在迭代操作的时候它会保持元素被插入时的顺序，示例如下：
 from collections import OrderedDict
 
 # OrderedDict保持传递顺序
@@ -24,3 +29,5 @@ print(d)  # OrderedDict([('foo', 1), ('bar', 2), ('spam', 3), ('grok', 4)])
 
 # 需要注意的是,一个OrderedDict的大小是一个普通字典的两倍,因为它内部维护着另外一个链表.
 # 所以数据量很大的时候要权衡一下
+
+# python 3.6之后dict会保持插入顺序了,OrderedDict内存也改为pypy的实现方式了
