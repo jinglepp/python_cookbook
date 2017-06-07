@@ -3,3 +3,8 @@ java
 python
 javascript
 kotlin
+c sharp
+c plus plus
+lisp
+typescript
+perl
