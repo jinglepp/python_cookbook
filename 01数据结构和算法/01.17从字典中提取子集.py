@@ -23,3 +23,4 @@ print(pp)
 p2_other_way = {key: prices[key] for key in prices.keys() & tech_names}
 print(p2_other_way)
 # 书中说这一种方式比字典推导慢1.6倍,
+1

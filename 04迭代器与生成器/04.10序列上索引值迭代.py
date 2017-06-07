@@ -30,9 +30,41 @@ from collections import defaultdict
 word_summary = defaultdict(list)
 with open('somefile.txt', 'r') as f:
     lines = f.readlines()
-for idx, line in enumerate(lines):
+for idx, line in enumerate(lines, 1):
     words = [w.strip().lower() for w in line.split()]
     for word in words:
         word_summary[word].append(idx)
 
 print(word_summary)
+
+# 如果你处理完文件后打印 word_summary ，会发现它是一个字典(准确来讲是一个 defaultdict )，
+# 对于每个单词有一个 key ，每个 key 对应的值是一个由这个单词出现的行号组成的列表。
+# 如果某个单词在一行中出现过两次，那么这个行号也会出现两次， 同时也可以作为文本的一个简单统计。
+
+# 讨论
+# 当你想额外定义一个计数变量的时候，使用 enumerate() 函数会更加简单。你可能会像下面这样写代码：
+
+lineno = 1
+for line in f:
+    # Process line
+    lineno += 1
+
+# 但是如果使用 enumerate() 函数来代替就显得更加优雅了：
+for lineno, line in enumerate(f, 1):
+    # process line
+    print(lineno, line)
+
+# enumerate() 函数返回的是一个 enumerate 对象实例，
+# 它是一个迭代器，返回连续的包含一个计数和一个值的元组，
+# 元组中的值通过在传入序列上调用 next() 返回。
+
+# 还有一点可能并不很重要，但是也值得注意，
+# 有时候当你在一个已经解压后的元组序列上使用 enumerate() 函数时很容易调入陷阱。
+# 你得像下面正确的方式这样写：
+data = [(1, 2), (3, 4), (5, 6), (7, 8)]
+# 正确
+for n, (x, y) in enumerate(data):
+    print(n, x, y)
+# # 错误
+# for n, x, y in enumerate(data):#ValueError: I/O operation on closed file.
+#     print(n, x, y)
