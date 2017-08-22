@@ -39,7 +39,7 @@ def inlined_async(func):
                 apply_async(a.func, a.args, callback=result_queue.put)
             except StopIteration:
                 break
-        return wrapper
+    return wrapper
 
 
 # 这两个代码片段允许你使用 yield 语句内联回调步骤。比如：
@@ -100,3 +100,4 @@ if __name__ == '__main__':
 # 比如，在 contextlib 中的 @contextmanager 装饰器使用了一个令人费解的技巧，
 # 通过一个 yield 语句将进入和离开上下文管理器粘合在一起。
 # 另外非常流行的 Twisted 包中也包含了非常类似的内联回调。
+
